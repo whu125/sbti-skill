@@ -1,11 +1,11 @@
 # SBTI.Skill
 
-> *"把 SBTI 人格做成 skill，不是为了演，而是为了让切换风格这件事真正变得可调用、可复用、可安装。"*
+> *"把 SBTI 人格做成 skill，让切换风格这件事真正变得可调用、可复用、可安装。"*
 
-**一套把 SBTI 人格原型打包成 Codex persona skills 的生成器。**
+**一套把 SBTI 人格原型打包成 Agent Skill 的生成器。**
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://python.org)
-[![Codex Skill](https://img.shields.io/badge/Codex-Skill-111827.svg)](https://openai.com)
+[![Agent Skill](https://img.shields.io/badge/Agent-Skill-111827.svg)](https://openai.com)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
 [![AgentSkills Style](https://img.shields.io/badge/AgentSkills-Inspired-f59e0b.svg)](https://github.com/therealXiaomanChu/ex-skill)
 
@@ -13,13 +13,34 @@
 
 给定一组 SBTI 人格设定  
 批量生成一套**真正可安装、可切换、可维护**的人格 skill  
-让 Codex 用不同人格的语气、决策偏好和协作姿态继续完成真实工作
+让你的 AI coding assistant 用不同人格的语气、决策偏好和协作姿态继续完成真实工作
 
 [安装](#安装) · [使用](#使用) · [效果示例](#效果示例) · [English](README_EN.md)
 
 ---
 
 ## 安装
+
+### 方式一：安装到 Claude Code
+
+> Claude Code 会从当前项目或全局目录下的 `.claude/skills/` 读取 skills。
+
+安装到当前项目：
+
+```bash
+mkdir -p .claude/skills
+git clone https://github.com/whu125/sbti-skill .claude/skills/create-sbti
+```
+
+安装到全局：
+
+```bash
+git clone https://github.com/whu125/sbti-skill ~/.claude/skills/create-sbti
+```
+
+### 方式二：作为通用 skill 工程使用
+
+如果你使用的是兼容 `SKILL.md` 结构的其他 agent 环境，也可以直接克隆本仓库，并运行生成与安装脚本。
 
 ### 生成 persona skills
 
@@ -65,7 +86,8 @@ python3 tools/install_persona_skills.py --slug mum --target-dir /your/path
 ## 环境要求
 
 - **Python**：3.9+
-- **Codex skills directory**：默认使用 `~/.codex/skills`
+- **Claude Code**：可通过 `.claude/skills/` 安装根 skill
+- **兼容 skill 目录**：默认安装脚本目标为 `~/.codex/skills`
 - **不需要数据库**
 - **不需要 Docker**
 - **不需要额外服务**
@@ -104,7 +126,7 @@ python3 tools/install_persona_skills.py --slug love-r
 - `soul-mum`
 - `soul-monk`
 
-你可以直接这样要求 Codex：
+你可以直接这样要求你的 assistant：
 
 ```text
 切换到 CTRL 人格

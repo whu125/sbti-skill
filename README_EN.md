@@ -2,10 +2,10 @@
 
 > *"Turning personas into skills is not about performance. It is about making style switching callable, reusable, and installable."*
 
-**A generator that turns SBTI persona archetypes into installable Codex persona skills.**
+**A generator that turns SBTI persona archetypes into installable agent skills.**
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://python.org)
-[![Codex Skill](https://img.shields.io/badge/Codex-Skill-111827.svg)](https://openai.com)
+[![Agent Skill](https://img.shields.io/badge/Agent-Skill-111827.svg)](https://openai.com)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
 [![AgentSkills Style](https://img.shields.io/badge/AgentSkills-Inspired-f59e0b.svg)](https://github.com/therealXiaomanChu/ex-skill)
 
@@ -13,13 +13,34 @@
 
 Given a structured set of SBTI personas  
 this project generates a full pack of **installable, switchable, maintainable** persona skills  
-so Codex can continue real work with different tones, collaboration styles, and decision biases
+so your AI coding assistant can continue real work with different tones, collaboration styles, and decision biases
 
 [Installation](#installation) · [Usage](#usage) · [Examples](#examples) · [中文](README.md)
 
 ---
 
 ## Installation
+
+### Option 1: Install into Claude Code
+
+> Claude Code reads skills from `.claude/skills/` in the current project or from the global skills directory.
+
+Install into the current project:
+
+```bash
+mkdir -p .claude/skills
+git clone https://github.com/whu125/sbti-skill .claude/skills/create-sbti
+```
+
+Install globally:
+
+```bash
+git clone https://github.com/whu125/sbti-skill ~/.claude/skills/create-sbti
+```
+
+### Option 2: Use as a generic skill project
+
+If your agent environment supports `SKILL.md`-style skills, you can also clone this repository directly and use the build/install scripts below.
 
 ### Build persona skills
 
@@ -65,7 +86,8 @@ python3 tools/install_persona_skills.py --slug mum --target-dir /your/path
 ## Requirements
 
 - **Python**: 3.9+
-- **Codex skills directory**: defaults to `~/.codex/skills`
+- **Claude Code**: supported through `.claude/skills/`
+- **Compatible skill directory**: installer defaults to `~/.codex/skills`
 - **No database required**
 - **No Docker required**
 - **No extra service required**
@@ -104,7 +126,7 @@ After installation, you will get a set of skills such as:
 - `soul-mum`
 - `soul-monk`
 
-You can then ask Codex to continue in one of those personas:
+You can then ask your assistant to continue in one of those personas:
 
 ```text
 Use CTRL persona for this refactor
